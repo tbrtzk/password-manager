@@ -84,7 +84,7 @@ password_label.grid(column=0, row=3)
 
 # Entries:
 website_entry = Entry()
-website_entry.grid(column=1, row=1, sticky="EW")
+website_entry.grid(column=1, row=1, columnspan=2, sticky="EW")
 website_entry.focus()
 email_entry = Entry()
 email_entry.grid(column=1, row=2, columnspan=2, sticky="EW")
