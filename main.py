@@ -8,6 +8,7 @@ import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
+    confirm_label.config(text="")
     password_entry.delete(0, END)
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -30,6 +31,7 @@ def generate_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def save_entries():
+    confirm_label.config(text="")
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
@@ -62,11 +64,13 @@ def save_entries():
         finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
+            confirm_label.config(text=f"Saved credentials for {website}")
 
 
 # ---------------------------- FIND PASSWORD -------------------------- #
 
 def find_password():
+    confirm_label.config(text="")
     website = website_entry.get()
     try:
         with open("data.json") as data_file:
@@ -99,6 +103,9 @@ email_label = Label(text="Email/Username:")
 email_label.grid(column=0, row=2)
 password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
+confirm_label = Label(fg="green")
+confirm_label.grid(column=1, row=5)
+
 
 # Entries:
 website_entry = Entry()
@@ -117,5 +124,6 @@ generate_password_button = Button(text="Generate Password", command=generate_pas
 generate_password_button.grid(column=2, row=3, sticky="EW")
 add_button = Button(text="Add", width=36, command=save_entries)
 add_button.grid(column=1, row=4, columnspan=2, sticky="EW")
+
 
 window.mainloop()
