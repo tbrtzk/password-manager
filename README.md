@@ -10,6 +10,6 @@ I built this password manager with Python and the Tkinter GUI package.
 - check for redundancies
 - delete entries
  
-![Password Manager](MyPass.png)
+![Password Manager](password_manager.gif)
   
 
